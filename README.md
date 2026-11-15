@@ -1,19 +1,21 @@
-# IP-scanner
-Basic IP scanner using bash ping loop. Learning project.   
+# IP-Scanner
 
-#What I learned 
-- Bash for loops 
-- Commands substitution $(seq)
-- grep filterin
-- cut & tr for parsing
-- Background process (&)
+A simple subnet IP scanner built using a Bash ping loop to discover active hosts on a local network.
 
-##Usage
+## What I Learned
+- Bash `if-else` conditions and `for` loops
+- Command substitution using `$(seq)`
+- Output filtering and parsing with `grep`, `cut`, and `tr`
+- Running background processes (`&`) and `wait` for faster execution
 
-./ip_test.sh 
+## Usage
+1. Give execute permission:
+   `chmod +x ip-scanner.sh`
+2. Run the script with the first three octets of your IP:
+   `./ip-scanner.sh 192.168.1`
 
-##Limitation 
-Only uses ICMP ping. If target blocks ICMP, it won't detect. Nmap is better for production.
+## Limitation
+This script only uses ICMP ping requests. If a target host blocks ICMP packets (firewall), it will not be detected. Tools like Nmap are better suited for production scanning.
 
 ## Why I Wrote This
-To understand how network scanners work at the lowest level.
+To understand how basic network host discovery works under the hood using core Linux utilities.
