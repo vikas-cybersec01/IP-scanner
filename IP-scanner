@@ -1,11 +1,12 @@
-#!/bin/bash 
-if [ -z "$1" ] 
-then 
-echo "You forget  and ip address"
-echo "The syntax is advanced_ip.txt"
+#!/bin/bash
 
-else 
-for ip in $(seq 1 254); do 
-ping -c 1 $1.$ip| grep "64 bytes" | cut -d " " -f 4 | tr -d ":" &
-done 
+if [ -z "$1" ]; then
+    echo "Error: You forgot to enter the network prefix!"
+    echo "Usage: ./ip-scanner.sh <first-three-octets>"
+    echo "Example: ./ip-scanner.sh 192.168.1"
+else
+    for ip in $(seq 1 254); do
+        ping -c 1 $1.$ip | grep "64 bytes" | cut -d " " -f 4 | tr -d ":" &
+    done
+    wait
 fi
